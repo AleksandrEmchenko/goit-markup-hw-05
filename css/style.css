@@ -73,9 +73,29 @@ header{
 .site-nav .item{
     position: relative;
 }
+/*-----animation of navigation when hover-----*/
+.site-nav .link::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--text-color);
+    transition: width;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-.current::after,
 .site-nav .link:hover::after{
+    width: 100%;
+    left: 0;
+}
+/*-----animation of navigation when hover-----*/
+
+
+.link.current::after {
     display: block;
     content: "";
     position: absolute;
@@ -85,6 +105,7 @@ header{
     border-radius: 2px;
     background-color: var(--accent-color);
 }
+
 
         /*-----auth start-----*/
 .auth-nav{
@@ -234,6 +255,7 @@ header{
     cursor: pointer;
 }
 /* -----/hero----- */
+
 
 /* -----section----- */
  .visually-hidden {
@@ -682,3 +704,80 @@ img{
     background-color: var(--second-bgcolor);
 }
 /* -----/our-contacts----- */
+
+/*-----modal-----*/
+.backdrop{
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, .5);
+    opacity: 1;
+    transform: scale(1);
+    /* transition-property: transform; */
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ 
+
+
+}
+.backdrop.is-hidden{
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0);
+    
+}
+
+.backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0.5);
+    color: #ffffff;
+}
+
+.modal{
+    display: flex;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    
+    color: #757575;
+    background-color: #ffffff;
+    border: 2px solid rgb(128, 128, 128);
+    border-radius: 4px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    transform: translate(-50%, -50%) scale(1);
+
+    transition-property: color, transform;
+    transition-duration: 1250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 300ms;
+
+    overflow: hidden;
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 0 ,0);
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 4px;
+    cursor: pointer;
+
+    transform-origin: top right;
+
+    transition-property: transform;
+    transition-duration: 1000ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 2000ms;
+    
+}
+
+.backdrop.is-hidden .close{
+    transform: rotate(90deg);
+}
+/*-----/modal-----*/
