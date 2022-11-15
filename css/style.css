@@ -57,6 +57,7 @@ header{
 
 .site-nav .list{
     display: flex;
+    
 }
 
 .site-nav .item:not(:last-child){
@@ -67,6 +68,22 @@ header{
 .auth-nav .link{
     display: block;
     padding: 32px 0;
+}
+
+.site-nav .item{
+    position: relative;
+}
+
+.current::after,
+.site-nav .link:hover::after{
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--accent-color);
 }
 
         /*-----auth start-----*/
@@ -291,9 +308,52 @@ header{
     display: flex;
 }
 
+img{
+    display: block;
+}
+
 .occupation .item:not(:last-child){
     margin-right: 30px;
 }
+
+/*-----occupation-overlay----- */
+.overlay{
+    position: absolute;
+    left: 0;
+    width: 100%;
+
+    color: var(--secondary-title-color);
+
+    transform: translateY(100%);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.occupation-overlay{
+    bottom: 0;
+    height: 70px;
+
+    padding: 27px 0;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    
+    background: rgba(47, 48, 58, 0.8);
+}
+
+
+
+
+
+
+
+/*-----/occupation-overlay----- */
+
 
 .text{
     line-height: 1.7;
@@ -454,8 +514,10 @@ header{
 }
 
 .project-text{
+    bottom: 0;
     padding: 20px 24px;
     border: 1px solid #EEEEEE;
+    opacity: 1;
 }
 
 /* .project .item:not(:nth-last-child(-n + 3)){
@@ -490,6 +552,32 @@ header{
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
      0px 4px 4px rgba(0, 0, 0, 0.06),
      1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+
+.project-thumb{
+    position: relative;
+    overflow: hidden;
+}
+
+.project-overlay{
+    top: 0;
+    height: 100%;
+    
+    padding: 63px 24px;
+
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+
+    background-color: rgba(33, 150, 243, 0.9);
+}
+
+.project .link:hover .project-overlay,
+.project .link:focus .project-overlay,
+.occupation .link:hover .occupation-overlay,
+.occupation .link:focus .occupation-overlay{
+    transform: translateY(0);
 }
 
 /* -----/Portfolio----- */
@@ -584,3 +672,13 @@ header{
 .footer .social-link:focus{
     background-color: var(--accent-color);
 }
+
+/* -----our-contacts----- */
+.our-contacts{
+    padding-top: 50px;
+    text-align: center;
+    width: 100%;
+    height: 500px;
+    background-color: var(--second-bgcolor);
+}
+/* -----/our-contacts----- */
