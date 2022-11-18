@@ -365,7 +365,7 @@ img{
 }
 
 .occupation-overlay{
-    bottom: 0;
+    bottom: 70px;
     height: 70px;
 
     padding: 27px 0;
@@ -425,8 +425,7 @@ img{
     margin-bottom: 10px;
 }
 
-.card-title,
-.card-subtitle{
+.card-title{
     color: var(--title-color);
 
     font-weight: 500;
@@ -437,10 +436,13 @@ img{
 }
 
 .card-subtitle{
+    font-size: 16px;
+    line-height: 1.18;
+    letter-spacing: 0.03em;
     margin-bottom: 16px;
-
+    text-align: center;
     color: var(--text-color);
-    font-weight: 500;
+    
 }
 
 
@@ -617,9 +619,7 @@ img{
 }
 
 .project .link:hover .project-overlay,
-.project .link:focus .project-overlay,
-.occupation .link:hover .occupation-overlay,
-.occupation .link:focus .occupation-overlay{
+.project .link:focus .project-overlay{
     transform: translateY(0);
 }
 
@@ -739,31 +739,22 @@ img{
     height: 100vh;
     background-color: rgba(255, 255, 255, .5);
     opacity: 1;
-    transform: scale(1);
-    /* transition-property: transform; */
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
- 
-
-
 }
+
 .backdrop.is-hidden{
     pointer-events: none;
     opacity: 0;
-    transform: scale(0);
-    
+    visibility: hidden;
+    transition-delay: 250ms;
 }
 
-.backdrop.is-hidden .modal{
-    transform: translate(-50%, -50%) scale(0.5);
-    color: #ffffff;
-}
+
 
 .modal{
     display: flex;
     position: absolute;
-    width: 400px;
-    height: 400px;
+    min-width: 400px;
+    min-height: 400px;
     top: 50%;
     left: 50%;
     
@@ -775,34 +766,39 @@ img{
     justify-content: center;
     align-items: center;
 
-    transform: translate(-50%, -50%) scale(1);
-
     transition-property: color, transform;
-    transition-duration: 1250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 300ms;
 
+    transform: translate(-50%, -50%) scale(1);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 }
-.close{
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgb(255, 0 ,0);
-    border: 1px solid rgb(128, 128, 128);
-    border-radius: 4px;
-    cursor: pointer;
 
-    transform-origin: top right;
-
-    transition-property: transform;
-    transition-duration: 1000ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 2000ms;
-    
+.backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0);
+    color: #ffffff;
 }
 
-.backdrop.is-hidden .close{
-    transform: rotate(90deg);
+.close{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    cursor: pointer;
+
+    transform: rotate(0deg);
+    transition-property: transform;
+    transition-duration: 1250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close:hover{
+    transform: rotate(360deg);
 }
 /*-----/modal-----*/
